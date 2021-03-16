@@ -86,10 +86,14 @@ body {
 :root {
   --bgcolor: #222;
   --windmillcolor: #BABABA;
-  --windmillrotation: 4s;
+  /* --windmillrotation: 4s; */
   --bulbcolor: #360A0A;
   --bulbLight: 10px;
   --lightbulbpulse: 2s;
+}
+
+#windmillTitle {
+  background-color: lightgreen;
 }
 
 
@@ -149,8 +153,24 @@ height: 200px;
 position: absolute;
 top: 40px;
 left: 50px;
-animation: rotatemill var(--windmillrotation) linear infinite;
+animation: rotatemill 10s linear infinite;
 }
+.speed1 {
+  animation: rotatemill 8s linear infinite;
+}
+.speed2 {
+  animation: rotatemill 4s linear infinite;
+}
+.speed3 {
+  animation: rotatemill 2s linear infinite;
+}
+.speed4 {
+  animation: rotatemill 1s linear infinite;
+}
+.speed5 {
+  animation: rotatemill 0.2s linear infinite;
+}
+
 
 .flap {
 width: 5px;
