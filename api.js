@@ -24,6 +24,9 @@ fetch(url)
 
     weather.city = data.name;
     weather.country = data.sys.country;
+
+    weather.longitude = data.coord.lon;
+    weather.latitude = data.coord.lat;
   })
   .then(function () {
     displayWeather();

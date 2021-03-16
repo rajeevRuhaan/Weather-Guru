@@ -81,3 +81,131 @@ body {
   text-align: center;
   font-size: 0.8em;
 }
+
+/********Windmill styles:**********/
+:root {
+  --bgcolor: #222;
+  --windmillcolor: #BABABA;
+  --windmillrotation: 4s;
+  --bulbcolor: #360A0A;
+  --bulbLight: 10px;
+  --lightbulbpulse: 2s;
+}
+
+
+
+body {
+  background: var(--bgcolor);
+}
+
+
+#windmill {
+  width: 300px;
+  height: 350px;
+  margin: 10px auto 0;
+  position: relative;
+  z-index: 10;
+  /* background: white; */
+}
+
+.post {
+position: absolute;
+width: 20px;
+height: 200px;
+background-color: lightblue;
+/* background-image: linear-gradient(to top, var(--windmillcolor) 0%, darken(var(--windmillcolor), 20%) 100%); */
+top: 145px;
+left: 145px;
+border-radius: 3px;
+}
+
+.engine {
+position: absolute;
+width: 20px;
+height: 20px;
+background-color: yellowgreen;
+/* background-image: linear-gradient(to bottom, var(--windmillcolor) 0%, darken var(--windmillcolor) 20%, 100%); */
+top: 130px;
+left: 140px;
+}
+
+.head {
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: 135px;
+  left: 145px;
+  z-index: 1000;
+  background-color: blue;
+  /* background-image: radial-gradient(center, var(--windmillcolor) 0%, darken( var(--windmillcolor) 40%) 100%); */
+  border-radius: 50%;
+
+}
+
+
+.flaps {
+width: 200px;
+height: 200px;
+position: absolute;
+top: 40px;
+left: 50px;
+animation: rotatemill var(--windmillrotation) linear infinite;
+}
+
+.flap {
+width: 5px;
+height: 120px;
+position: absolute;
+background-color: lightblue;
+/* background: linear-gradient(to bottom, var(--windmillcolor) 0%, darken(var(--windmillcolor), 20%) 100%); */
+border-top-left-radius: 5px 20px;
+}
+
+.flaps .flap:nth-child(1) {
+  top: -20px;
+  left: 97px;
+}
+
+
+.flaps .flap:nth-child(2) {
+  top: 70px;
+  left: 150px;
+  transform: rotate(120deg);
+}
+
+.flaps .flap:nth-child(3) {
+top: 70px;
+left: 45px;
+transform: rotate(240deg);
+}
+.bulb {
+height: 10px;
+width: 10px;
+position: absolute;
+top: 123px;
+left: 145px;
+background: var(--bulbcolor);
+border-radius: 50%;
+animation: lightbulblight var(--lightbulbpulse) linear infinite;
+z-index: -1;
+}
+
+@keyframes rotatemill {
+0% {
+  transform: rotate(0deg)
+}
+100% {
+  transform: rotate(-360deg)
+}
+}
+@keyframes lightbulblight {
+  0% {
+    background: var(--bulbcolor);
+    box-shadow: 0 0 0 var(--bulbcolor);
+  }
+
+  50% {
+    background: lighten(var(--bulbcolor), 60%);
+    box-shadow: 0 0 var(--bulbLight) lighten(var(--bulbcolor), 60%);
+  }
+}
