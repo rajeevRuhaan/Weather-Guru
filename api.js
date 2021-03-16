@@ -45,23 +45,23 @@ function displayWeather() {
 }
 function displayWind() {
   if (weather.windspeed < 2) {
-    windmillText.innerHTML = `Wind is calm (${weather.windspeed})`;
+    windmillText.innerHTML = `Wind speed: Calm (${weather.windspeed} m/s)`;
     rotatingFlaps.classList.add("speed1");
     console.log("speed1");
   } else if (weather.windspeed.value < 3) {
-    windmillText.innerHTML = `Windspeed: Calm (${weather.windspeed})`;
+    windmillText.innerHTML = `Wind speed: Calm (${weather.windspeed} m/s)`;
     console.log("speed2");
     rotatingFlaps.classList.add("speed2");
   } else if (weather.windspeed < 5) {
-    windmillText.innerHTML = `Windspeed: Moderate (${weather.windspeed})`;
+    windmillText.innerHTML = `Wind speed: Moderate (${weather.windspeed} m/s)`;
     console.log("speed4");
     rotatingFlaps.classList.add("speed3");
   } else if (weather.windspeed < 8) {
-    windmillText.innerHTML = `Windspeed: Strong winds (${weather.windspeed})`;
+    windmillText.innerHTML = `Wind speed: Strong winds (${weather.windspeed} m/s)`;
     console.log("speed4");
     rotatingFlaps.classList.add("speed4");
   } else {
-    windmillText.innerHTML = `Windspeed: Gale (${weather.windspeed})`;
+    windmillText.innerHTML = `Wind speed: Gale (${weather.windspeed})`;
     rotatingFlaps.classList.add("speed5");
     console.log("speed5, fastest");
   }
