@@ -81,6 +81,148 @@ body {
   text-align: center;
   font-size: 0.8em;
 }
+
+/********Windmill styles:**********/
+:root {
+  --bgcolor: #222;
+  --windmillcolor: #bababa;
+  /* --windmillrotation: 4s; */
+  --bulbcolor: #360a0a;
+  --bulbLight: 10px;
+  --lightbulbpulse: 2s;
+}
+
+#windmillTitle {
+  background-color: lightgreen;
+}
+
+#windmill {
+  width: 300px;
+  height: 350px;
+  margin: 10px auto 0;
+  position: relative;
+  z-index: 10;
+  /* background: white; */
+}
+
+.post {
+  position: absolute;
+  width: 10px;
+  height: 200px;
+
+  background-color: #bababa;
+  /* background-image: linear-gradient(to top, var(--windmillcolor) 0%, darken(var(--windmillcolor), 20%) 100%); */
+  top: 145px;
+  left: 145px;
+  border-radius: 3px;
+}
+
+.engine {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #bababa;
+  /* background-image: linear-gradient(to bottom, var(--windmillcolor) 0%, darken var(--windmillcolor) 20%, 100%); */
+  top: 130px;
+  left: 140px;
+  border-radius: 4px;
+}
+
+.head {
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: 135px;
+  left: 145px;
+  z-index: 1000;
+  background-color: #696969;
+  /* background-image: radial-gradient(center, var(--windmillcolor) 0%, darken( var(--windmillcolor) 40%) 100%); */
+  border-radius: 50%;
+}
+
+.flaps {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top: 40px;
+  left: 50px;
+  animation: rotatemill 10s linear infinite;
+}
+.speed1 {
+  animation: rotatemill 8s linear infinite;
+}
+.speed2 {
+  animation: rotatemill 4s linear infinite;
+}
+.speed3 {
+  animation: rotatemill 2s linear infinite;
+}
+.speed4 {
+  animation: rotatemill 1s linear infinite;
+}
+.speed5 {
+  animation: rotatemill 0.2s linear infinite;
+}
+
+.flap {
+  width: 5px;
+  height: 120px;
+  position: absolute;
+  background-color: #979797;
+  /* background: linear-gradient(to bottom, var(--windmillcolor) 0%, darken(var(--windmillcolor), 20%) 100%); */
+  border-top-left-radius: 5px 20px;
+}
+
+.flaps .flap:nth-child(1) {
+  top: -20px;
+  left: 97px;
+}
+
+.flaps .flap:nth-child(2) {
+  top: 70px;
+  left: 150px;
+  transform: rotate(120deg);
+}
+
+.flaps .flap:nth-child(3) {
+  top: 70px;
+  left: 45px;
+  transform: rotate(240deg);
+}
+.bulb {
+  height: 10px;
+  width: 10px;
+  position: absolute;
+  top: 123px;
+  left: 145px;
+  background: red;
+  border-radius: 50%;
+  animation: lightbulblight var(--lightbulbpulse) linear infinite;
+  z-index: -1;
+}
+
+@keyframes rotatemill {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+@keyframes lightbulblight {
+  0% {
+    background: rgba(197, 1, 1, 0.733);
+    box-shadow: 0 0 0 var(--bulbcolor);
+  }
+
+  50% {
+    background: lighten(var(--bulbcolor), 60%);
+    box-shadow: 0 0 var(--bulbLight) lighten(var(--bulbcolor), 60%);
+  }
+}
+=======
+
+
 /*Air quality card*/
 
 #pollutionInfo {
@@ -96,13 +238,12 @@ body {
   grid-template-columns: 3.5rem 2rem 2rem 6rem;
   grid-template-rows: 3.5rem repeat(5, 3.5rem);
   grid-template-areas:
-  "a a a a"
-  "e j c o"
-  "f k c p"
-  "g l c q"
-  "h m c r"
-  "i n c s"
-  ;
+    "a a a a"
+    "e j c o"
+    "f k c p"
+    "g l c q"
+    "h m c r"
+    "i n c s";
   grid-gap: 0.5rem;
   position: relative;
   background-color: white;
@@ -143,10 +284,10 @@ body {
 /*Triangles*/
 
 .triangle-down {
-	width: 0;
-	height: 0;
-	border-left: 10px solid transparent;
-	border-right: 10px solid transparent;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
   transform: rotate(270deg);
 }
 .triangle-down p {
@@ -174,37 +315,40 @@ body {
 }
 /*Pollution bar*/
 .bar {
-grid-area: c;
-height: 95%;
-width: 2rem;
-background: linear-gradient(to top, red, orange, yellow, rgb(188, 235, 135), green);
-border-radius: 5px;
-margin-bottom: 1rem;
+  grid-area: c;
+  height: 95%;
+  width: 2rem;
+  background: linear-gradient(
+    to top,
+    red,
+    orange,
+    yellow,
+    rgb(188, 235, 135),
+    green
+  );
+  border-radius: 5px;
+  margin-bottom: 1rem;
 }
 
 /*Descriptions */
 
-  .descriptions {
-    font-size: 16px;
-    padding-left: 1rem;
-    padding-right: .6rem;
-  }
-  #descRed{
-    grid-area: s;
-  }
-  #descOrange{
-    grid-area: r;
-  }
-  #descYellow{
-    grid-area: q;
-  }
-  #descLightGreen{
-    grid-area: p;
-  }
-  #descGreen{
-    grid-area: o;
-  }
-
-
-
-
+.descriptions {
+  font-size: 16px;
+  padding-left: 1rem;
+  padding-right: 0.6rem;
+}
+#descRed {
+  grid-area: s;
+}
+#descOrange {
+  grid-area: r;
+}
+#descYellow {
+  grid-area: q;
+}
+#descLightGreen {
+  grid-area: p;
+}
+#descGreen {
+  grid-area: o;
+}
