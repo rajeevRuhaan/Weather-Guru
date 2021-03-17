@@ -63,8 +63,7 @@ body {
   color: #293251;
   font-size: 0.5em;
 }
-/* .temp-description {
-} */
+
 .temp-description p {
   padding: 8px;
   margin: 0;
@@ -334,24 +333,23 @@ body {
 
 /*Descriptions*/
 
-  .descriptions {
-    font-size: 16px;
-    padding-left: 1rem;
-    padding-right: .6rem;
-  }
-  #descRed{
-    grid-area: s;
-  }
-  #descOrange{
-    grid-area: r;
-  }
-  #descYellow{
-    grid-area: q;
-  }
-  #descLightGreen{
-    grid-area: p;
-  }
-  #descGreen{
-    grid-area: o;
-  }
-
+.descriptions {
+  font-size: 16px;
+  padding-left: 1rem;
+  padding-right: 0.6rem;
+}
+#descRed {
+  grid-area: s;
+}
+#descOrange {
+  grid-area: r;
+}
+#descYellow {
+  grid-area: q;
+}
+#descLightGreen {
+  grid-area: p;
+}
+#descGreen {
+  grid-area: o;
+}
