@@ -4,6 +4,9 @@ let tempElement = document.querySelector(".temp-value p");
 let descElement = document.querySelector(".temp-description p");
 let locationElement = document.querySelector(".location p");
 
+// Variable for pollution value
+let pollution = 0;
+
 const weather = {};
 weather.temperature = {
   unit: "celsius",
@@ -55,3 +58,42 @@ tempElement.addEventListener("click", () => {
     weather.temperature.unit = "celsius";
   }
 });
+
+/** Air pollution */
+
+let pollutionValues = document.getElementsByClassName("pollutionValues");
+let triangles = document.getElementsByClassName("triangle-down");
+let pollutionDescriptions = document.getElementsByClassName("descriptions");
+
+// pollution = 1;
+
+for (i = 0; i <pollutionValues.length; i++) {
+  pollutionValues[i].style.visibility = "hidden";
+  triangles[i].style.visibility = "hidden";
+  pollutionDescriptions[i].style.visibility = "hidden";
+}
+
+if (pollution === 5) {
+  pollutionValues[0].style.visibility = "visible";
+  triangles[0].style.visibility = "visible";
+  pollutionDescriptions[0].style.visibility = "visible";
+} else if (pollution === 4) {
+  pollutionValues[1].style.visibility = "visible";
+  triangles[1].style.visibility = "visible";
+  pollutionDescriptions[1].style.visibility = "visible";
+} else if (pollution === 3) {
+  pollutionValues[2].style.visibility = "visible";
+  triangles[2].style.visibility = "visible";
+  pollutionDescriptions[2].style.visibility = "visible";
+} else if (pollution === 2) {
+  pollutionValues[3].style.visibility = "visible";
+  triangles[3].style.visibility = "visible";
+  pollutionDescriptions[3].style.visibility = "visible";
+} else if (pollution === 1) {
+  pollutionValues[4].style.visibility = "visible";
+  triangles[4].style.visibility = "visible";
+  pollutionDescriptions[4].style.visibility = "visible";
+}
+
+
+
