@@ -113,7 +113,7 @@ let pollutionValues = document.getElementsByClassName("pollutionValues");
 let triangles = document.getElementsByClassName("triangle-down");
 let pollutionDescriptions = document.getElementsByClassName("descriptions");
 
-// pollution = 1;
+let pollution = 3;
 
 for (i = 0; i < pollutionValues.length; i++) {
   pollutionValues[i].style.visibility = "hidden";
@@ -142,3 +142,4 @@ if (pollution === 5) {
   triangles[4].style.visibility = "visible";
   pollutionDescriptions[4].style.visibility = "visible";
 }
+console.log(pollution);
