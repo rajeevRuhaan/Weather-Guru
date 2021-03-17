@@ -9,7 +9,7 @@ let windmillText = document.getElementById("windmillTitle");
 let rotatingFlaps = document.querySelector(".flaps");
 
 //for eventlistener of submit button on landing page
-let submit = document.getElementById("submit");
+//let submit = document.getElementById("submit");
 
 const weather = {};
 weather.temperature = {
