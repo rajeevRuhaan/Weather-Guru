@@ -81,3 +81,130 @@ body {
   text-align: center;
   font-size: 0.8em;
 }
+/*Air quality card*/
+
+#pollutionInfo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 7vh;
+}
+.pollutionGrid {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: 3.5rem 2rem 2rem 6rem;
+  grid-template-rows: 3.5rem repeat(5, 3.5rem);
+  grid-template-areas:
+  "a a a a"
+  "e j c o"
+  "f k c p"
+  "g l c q"
+  "h m c r"
+  "i n c s"
+  ;
+  grid-gap: 0.5rem;
+  position: relative;
+  background-color: white;
+  border-radius: 10px;
+}
+#headline {
+  font-size: 24px;
+  grid-area: a;
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+/*Values*/
+
+.pollutionValues {
+  font-size: 20px;
+  text-align: right;
+  margin-right: 1rem;
+  font-weight: bold;
+}
+
+#valueRed {
+  grid-area: i;
+}
+#valueOrange {
+  grid-area: h;
+}
+#valueYellow {
+  grid-area: g;
+}
+#valueLightGreen {
+  grid-area: f;
+}
+#valueGreen {
+  grid-area: e;
+}
+
+/*Triangles*/
+
+.triangle-down {
+	width: 0;
+	height: 0;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+  transform: rotate(270deg);
+}
+.triangle-down p {
+  font-size: 12px;
+}
+#redTriangle {
+  grid-area: n;
+  border-top: 20px solid red;
+}
+#orangeTriangle {
+  grid-area: m;
+  border-top: 20px solid orange;
+}
+#yellowTriangle {
+  border-top: 20px solid yellow;
+  grid-area: l;
+}
+#lightGreenTriangle {
+  border-top: 20px solid rgb(188, 235, 135);
+  grid-area: k;
+}
+#greenTriangle {
+  border-top: 20px solid green;
+  grid-area: j;
+}
+/*Pollution bar*/
+.bar {
+grid-area: c;
+height: 95%;
+width: 2rem;
+background: linear-gradient(to top, red, orange, yellow, rgb(188, 235, 135), green);
+border-radius: 5px;
+margin-bottom: 1rem;
+}
+
+/*Descriptions */
+
+  .descriptions {
+    font-size: 16px;
+    padding-left: 1rem;
+    padding-right: .6rem;
+  }
+  #descRed{
+    grid-area: s;
+  }
+  #descOrange{
+    grid-area: r;
+  }
+  #descYellow{
+    grid-area: q;
+  }
+  #descLightGreen{
+    grid-area: p;
+  }
+  #descGreen{
+    grid-area: o;
+  }
+
+
+
+
