@@ -5,7 +5,7 @@ body {
   background-color: #293251;
 }
 .container {
-  width: 300px;
+  width: 240px;
   background-color: #fff;
   display: block;
   margin: 0 auto;
@@ -227,7 +227,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 7vh;
+  margin: 1vh;
 }
 .pollutionGrid {
   display: grid;
@@ -265,6 +265,7 @@ body {
 
 #valueRed {
   grid-area: i;
+  /* visibility: hidden; */
 }
 #valueOrange {
   grid-area: h;
@@ -280,7 +281,9 @@ body {
 }
 
 /*Triangles*/
-
+#coLevel {
+  margin-left: 60px;
+}
 .triangle-down {
   width: 0;
   height: 0;
@@ -292,6 +295,7 @@ body {
   font-size: 12px;
 }
 #redTriangle {
+  /* visibility: hidden; */
   grid-area: n;
   border-top: 20px solid red;
 }

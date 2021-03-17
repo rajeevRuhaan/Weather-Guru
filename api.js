@@ -15,47 +15,50 @@ const weather = {};
 weather.temperature = {
   unit: "celsius",
 };
-
+let pollution = 0;
 const KELVIN = 273;
 const key = "92e62b34141b6fe50fe8e3935ae2e018";
 
-//let city = "espoo"; /* prompt("Enter city name") */
-var submit = document.getElementById("submit");
+let city = prompt("Enter city name");
+//var submit = document.getElementById("submit");
 
-function getCity() {
+/* function getCity() {
   event.preventDefault();
   let city = document.getElementById("cityName").value;
   console.log(city);
-
-  /* function city() {
+} */
+/* function city() {
   let cityN = document.getElementById("cityName").value;
   console.log(cityN);
 }
 city(); */
-  /* function getCity() {
+/* function getCity() {
   let city = document.getElementById(cityName).value;
   return city;
 }
 let cityN = getCity();
 console.log(cityN); */
 
-  /*** fetching dataing using openweather api */
-  let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${key}`;
-  fetch(url)
-    .then((resp) => resp.json())
-    .then((data) => {
-      console.log(data);
-      weather.temperature.value = Math.floor(data.main.temp - KELVIN);
-      weather.description = data.weather[0].description;
-      weather.iconId = data.weather[0].icon;
+/*** fetching dataing using openweather api */
+let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${key}`;
+fetch(url)
+  .then((resp) => resp.json())
+  .then((data) => {
+    console.log(data);
+    weather.temperature.value = Math.floor(data.main.temp - KELVIN);
+    weather.description = data.weather[0].description;
+    weather.iconId = data.weather[0].icon;
 
-      weather.city = data.name;
-      weather.country = data.sys.country;
-    })
-    .then(function () {
-      displayWeather();
-    });
-}
+    weather.city = data.name;
+    weather.country = data.sys.country;
+    let latitude = data.coord.lat;
+    let longitude = data.coord.lon;
+    getLatLon(latitude, longitude);
+  })
+  .then(function () {
+    displayWeather();
+  });
+
 function displayWeather() {
   iconElement.innerHTML = `<img src="icons/${weather.iconId}.png"/>`;
   tempElement.innerHTML = `${weather.temperature.value}° <span>C</span>`;
@@ -85,60 +88,67 @@ tempElement.addEventListener("click", () => {
 
 /**EVENTLISTENER get city name */
 
-submit.addEventListener("click", getCity);
+//submit.addEventListener("click", getCity);
 
 /**second api call */
-let lat = 60.25;
-let lon = 24.6667;
-/* let cnt = 10; */
-/* let key1 = "15e011982aa379793f2783ceb2b8952c"; */
-let dailyForcast = `http://api.openweathermap.org/data/2.5/air_pollution/forecast?lat=${lat}&lon=${lon}&appid=${key}`;
-
-/* `http://api.openweathermap.org/data/2.5/forecast/daily?q=${city}&cnt=${cnt}&APPID=${key}`; */
-fetch(dailyForcast)
-  .then((resp) => resp.json())
-  .then((forcast) => {
-    console.log(forcast);
-
-    let epocToDate = forcast.list[24].dt;
-    console.log("data:", epocToDate);
-    let myDate = new Date(epocToDate * 1000);
-    let convert = myDate.toLocaleString();
-    console.log("readable date:", convert);
-  });
-
-/** Air pollution */
-
 let pollutionValues = document.getElementsByClassName("pollutionValues");
 let triangles = document.getElementsByClassName("triangle-down");
 let pollutionDescriptions = document.getElementsByClassName("descriptions");
+let coLevel = document.getElementById("coLevel");
 
-// pollution = 1;
+function getLatLon(la, lo) {
+  console.log(la, lo);
 
-for (i = 0; i < pollutionValues.length; i++) {
-  pollutionValues[i].style.visibility = "hidden";
-  triangles[i].style.visibility = "hidden";
-  pollutionDescriptions[i].style.visibility = "hidden";
+  //let lat = 28.6667; //60.25;
+  //let lon = 77.2167; //24.6667;
+  /* let cnt = 10; */
+  /* let key1 = "15e011982aa379793f2783ceb2b8952c"; */
+  let dailyForcast = `http://api.openweathermap.org/data/2.5/air_pollution/forecast?lat=${la}&lon=${lo}&appid=${key}`;
+
+  /* `http://api.openweathermap.org/data/2.5/forecast/daily?q=${city}&cnt=${cnt}&APPID=${key}`; */
+  fetch(dailyForcast)
+    .then((resp) => resp.json())
+    .then((forcast) => {
+      console.log(forcast);
+      let pollution = forcast.list[0].components.co;
+      console.log(pollution);
+      let epocToDate = forcast.list[24].dt;
+      console.log("data:", epocToDate);
+      let myDate = new Date(epocToDate * 1000);
+      let convert = myDate.toLocaleString();
+      console.log("readable date:", convert);
+      coLevel.textContent = `${pollution} (µg/m3)`;
+      /* Display air index */
+
+      for (i = 0; i < pollutionValues.length; i++) {
+        pollutionValues[i].style.visibility = "hidden";
+        triangles[i].style.visibility = "hidden";
+        pollutionDescriptions[i].style.visibility = "hidden";
+      }
+
+      if (pollution > 30000) {
+        pollutionValues[0].style.visibility = "visible";
+        triangles[0].style.visibility = "visible";
+        pollutionDescriptions[0].style.visibility = "visible";
+      } else if (pollution > 20000) {
+        pollutionValues[1].style.visibility = "visible";
+        triangles[1].style.visibility = "visible";
+        pollutionDescriptions[1].style.visibility = "visible";
+      } else if (pollution > 8000) {
+        pollutionValues[2].style.visibility = "visible";
+        triangles[2].style.visibility = "visible";
+        pollutionDescriptions[2].style.visibility = "visible";
+      } else if (pollution > 4000) {
+        pollutionValues[3].style.visibility = "visible";
+        triangles[3].style.visibility = "visible";
+        pollutionDescriptions[3].style.visibility = "visible";
+      } else if (pollution > 0) {
+        pollutionValues[4].style.visibility = "visible";
+        triangles[4].style.visibility = "visible";
+        pollutionDescriptions[4].style.visibility = "visible";
+      }
+    });
 }
+/** Air pollution */
 
-if (pollution === 5) {
-  pollutionValues[0].style.visibility = "visible";
-  triangles[0].style.visibility = "visible";
-  pollutionDescriptions[0].style.visibility = "visible";
-} else if (pollution === 4) {
-  pollutionValues[1].style.visibility = "visible";
-  triangles[1].style.visibility = "visible";
-  pollutionDescriptions[1].style.visibility = "visible";
-} else if (pollution === 3) {
-  pollutionValues[2].style.visibility = "visible";
-  triangles[2].style.visibility = "visible";
-  pollutionDescriptions[2].style.visibility = "visible";
-} else if (pollution === 2) {
-  pollutionValues[3].style.visibility = "visible";
-  triangles[3].style.visibility = "visible";
-  pollutionDescriptions[3].style.visibility = "visible";
-} else if (pollution === 1) {
-  pollutionValues[4].style.visibility = "visible";
-  triangles[4].style.visibility = "visible";
-  pollutionDescriptions[4].style.visibility = "visible";
-}
+//pollution = 3;
