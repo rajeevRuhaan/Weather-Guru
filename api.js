@@ -74,9 +74,9 @@ for (i = 0; i <pollutionValues.length; i++) {
 }
 
 if (pollution === 5) {
-  pollutionValues[0].style.visibility = "visible";
-  triangles[0].style.visibility = "visible";
-  pollutionDescriptions[0].style.visibility = "visible";
+  pollutionValues[indPollution].style.visibility = "visible";
+  triangles[indPollution].style.visibility = "visible";
+  pollutionDescriptions[indPollution].style.visibility = "visible";
 } else if (pollution === 4) {
   pollutionValues[1].style.visibility = "visible";
   triangles[1].style.visibility = "visible";
