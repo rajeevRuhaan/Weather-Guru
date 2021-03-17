@@ -20,40 +20,42 @@ const KELVIN = 273;
 const key = "92e62b34141b6fe50fe8e3935ae2e018";
 
 //let city = "espoo"; /* prompt("Enter city name") */
-/* function city() {
+var submit = document.getElementById("submit");
+
+function getCity() {
+  event.preventDefault();
+  let city = document.getElementById("cityName").value;
+  console.log(city);
+
+  /* function city() {
   let cityN = document.getElementById("cityName").value;
   console.log(cityN);
 }
 city(); */
-/* function getCity() {
+  /* function getCity() {
   let city = document.getElementById(cityName).value;
   return city;
 }
 let cityN = getCity();
 console.log(cityN); */
 
-function getCity() 
-  let city = document.getElementById("cityName").value;
-  return city;
+  /*** fetching dataing using openweather api */
+  let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${key}`;
+  fetch(url)
+    .then((resp) => resp.json())
+    .then((data) => {
+      console.log(data);
+      weather.temperature.value = Math.floor(data.main.temp - KELVIN);
+      weather.description = data.weather[0].description;
+      weather.iconId = data.weather[0].icon;
 
-console.log(getCity());
-/*** fetching dataing using openweather api */
-let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${key}`;
-fetch(url)
-  .then((resp) => resp.json())
-  .then((data) => {
-    console.log(data);
-    weather.temperature.value = Math.floor(data.main.temp - KELVIN);
-    weather.description = data.weather[0].description;
-    weather.iconId = data.weather[0].icon;
-
-    weather.city = data.name;
-    weather.country = data.sys.country;
-  })
-  .then(function () {
-    displayWeather();
-  });
-
+      weather.city = data.name;
+      weather.country = data.sys.country;
+    })
+    .then(function () {
+      displayWeather();
+    });
+}
 function displayWeather() {
   iconElement.innerHTML = `<img src="icons/${weather.iconId}.png"/>`;
   tempElement.innerHTML = `${weather.temperature.value}° <span>C</span>`;
@@ -104,3 +106,39 @@ fetch(dailyForcast)
     let convert = myDate.toLocaleString();
     console.log("readable date:", convert);
   });
+
+/** Air pollution */
+
+let pollutionValues = document.getElementsByClassName("pollutionValues");
+let triangles = document.getElementsByClassName("triangle-down");
+let pollutionDescriptions = document.getElementsByClassName("descriptions");
+
+// pollution = 1;
+
+for (i = 0; i < pollutionValues.length; i++) {
+  pollutionValues[i].style.visibility = "hidden";
+  triangles[i].style.visibility = "hidden";
+  pollutionDescriptions[i].style.visibility = "hidden";
+}
+
+if (pollution === 5) {
+  pollutionValues[0].style.visibility = "visible";
+  triangles[0].style.visibility = "visible";
+  pollutionDescriptions[0].style.visibility = "visible";
+} else if (pollution === 4) {
+  pollutionValues[1].style.visibility = "visible";
+  triangles[1].style.visibility = "visible";
+  pollutionDescriptions[1].style.visibility = "visible";
+} else if (pollution === 3) {
+  pollutionValues[2].style.visibility = "visible";
+  triangles[2].style.visibility = "visible";
+  pollutionDescriptions[2].style.visibility = "visible";
+} else if (pollution === 2) {
+  pollutionValues[3].style.visibility = "visible";
+  triangles[3].style.visibility = "visible";
+  pollutionDescriptions[3].style.visibility = "visible";
+} else if (pollution === 1) {
+  pollutionValues[4].style.visibility = "visible";
+  triangles[4].style.visibility = "visible";
+  pollutionDescriptions[4].style.visibility = "visible";
+}
