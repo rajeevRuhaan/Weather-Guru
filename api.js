@@ -142,4 +142,4 @@ if (pollution === 5) {
   triangles[4].style.visibility = "visible";
   pollutionDescriptions[4].style.visibility = "visible";
 }
-
+console.log(pollution);
