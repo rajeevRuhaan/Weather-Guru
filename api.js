@@ -3,7 +3,14 @@ let iconElement = document.querySelector(".weather-icon");
 let tempElement = document.querySelector(".temp-value p");
 let descElement = document.querySelector(".temp-description p");
 let locationElement = document.querySelector(".location p");
+
+//for windmille we need a couple more elements:
+let windmillText = document.getElementById("windmillTitle");
+let rotatingFlaps = document.querySelector(".flaps");
+
+//for eventlistener of submit button on landing page
 let submit = document.getElementById("submit");
+
 const weather = {};
 weather.temperature = {
   unit: "celsius",
@@ -25,10 +32,10 @@ city(); */
 let cityN = getCity();
 console.log(cityN); */
 
-function getCity() {
+function getCity() 
   let city = document.getElementById("cityName").value;
   return city;
-}
+
 console.log(getCity());
 /*** fetching dataing using openweather api */
 let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${key}`;
