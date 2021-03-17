@@ -30,7 +30,8 @@ fetch(url)
     weather.country = data.sys.country;
 
     //let's get windspeed also:
-    weather.windspeed = data.wind.speed;
+    weather.windspeed = 7;
+    // data.wind.speed;
   })
   .then(function () {
     displayWeather();
@@ -49,7 +50,7 @@ function displayWind() {
     rotatingFlaps.classList.add("speed1");
     console.log("speed1");
   } else if (weather.windspeed.value < 3) {
-    windmillText.innerHTML = `Wind speed: Calm (${weather.windspeed} m/s)`;
+    windmillText.innerHTML = `Wind speed: Light breeze (${weather.windspeed} m/s)`;
     console.log("speed2");
     rotatingFlaps.classList.add("speed2");
   } else if (weather.windspeed < 5) {
