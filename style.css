@@ -171,15 +171,29 @@ span:hover {
   text-align: center;
   font-size: 0.8em;
 }
+/**********sunrise/sunset style:*********/
+.sunrise_set {
+  width: 300px;
+  height: 200px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  margin-top: 10px;
+  text-align: center;
+  padding-top: 10px;
+}
 
 /********Windmill styles:**********/
 .windmill-container {
   width: 300px;
-  height: 278px;
+  height: 100px;
   background-color: rgba(255, 255, 255, 0.459);
   border-radius: 10px;
   text-align: center;
   padding-top: 10px;
+}
+#windData {
+  display: flex;
+  justify-content: space-around;
 }
 
 #windDirection {
@@ -199,9 +213,7 @@ span:hover {
   position: absolute;
   width: 5px;
   height: 80px;
-
   background-color: #bababa;
-  /* background-image: linear-gradient(to top, var(--windmillcolor) 0%, darken(var(--windmillcolor), 20%) 100%); */
   top: 145px;
   left: 145px;
   border-radius: 3px;
@@ -212,7 +224,6 @@ span:hover {
   width: 10px;
   height: 10px;
   background-color: #bababa;
-  /* background-image: linear-gradient(to bottom, var(--windmillcolor) 0%, darken var(--windmillcolor) 20%, 100%); */
   top: 137px;
   left: 142px;
   border-radius: 2px;
@@ -258,8 +269,6 @@ span:hover {
   height: 60px;
   position: absolute;
   background-color: #979797;
-  /* background: linear-gradient(to bottom, var(--windmillcolor) 0%, darken(var(--windmillcolor), 20%) 100%); */
-  /* border-top-left-radius: 5px 20px; */
 }
 
 .flaps .flap:nth-child(1) {

@@ -18,6 +18,10 @@ let greetingText = document.getElementById("greeting-text");
 let windmillText = document.getElementById("windmillTitle");
 let rotatingFlaps = document.querySelector(".flaps");
 
+//For sunrise and sunset:
+let sunriseElement = document.querySelector(".sunrise p");
+let sunsetElement = document.querySelector(".sunset p");
+
 //for eventlistener of submit button
 let submit = document.getElementById("submit");
 let city = "Helsinki";
@@ -61,15 +65,18 @@ function getCity() {
       //Getting wind data:
       weather.windspeed = data.wind.speed;
       weather.windDirection = data.wind.deg;
+
+      //Getting sunrise/sunset data:
+      weather.sunrise = data.sys.sunrise + data.timezone;
+      weather.sunset = data.sys.sunset + data.timezone;
     })
     .then(function () {
       displayWeather();
       displayWind();
       //let's get the greeting also:
       displayGreeting();
-
       displayWindDirection();
-
+      displayDaylight();
       showData();
     });
 }
@@ -489,4 +496,19 @@ function displayWindDirection() {
   console.log("Wind angle= " + weather.windDirection);
   document.getElementById("windDirection").style.transform =
     "rotate(" + weather.windDirection + "deg)";
+}
+
+function displayDaylight() {
+  let secRise = weather.sunrise;
+  let dateRise = new Date(secRise * 1000);
+  let timestrRise = dateRise.toISOString();
+  let dataSplittedTo2 = timestrRise.split("T");
+  let dataSplittedAgain = dataSplittedTo2[1].split(".");
+  sunriseElement.innerHTML = dataSplittedAgain[0];
+  let secSet = weather.sunset;
+  let dateSet = new Date(secSet * 1000);
+  let timestrSet = dateSet.toISOString();
+  let dataSplittedToTwo = timestrSet.split("T");
+  let dataSplitted = dataSplittedToTwo[1].split(".");
+  sunsetElement.innerHTML = dataSplitted[0];
 }
