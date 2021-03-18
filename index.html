@@ -5,45 +5,86 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <title>Weather fetching</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
+    <title>Weather-guru landing Page</title>
   </head>
   <body>
     <div class="container">
-      <div class="app-title">
-        <p>Weather</p>
-      </div>
-      <div class="notification"></div>
-
-      <div class="weather container">
-        <div class="weather-icon">
-          <img src="icons/unknown.png" alt="" />
-        </div>
-        <div class="temp-value">
-          <p>- °<span>C</span></p>
-        </div>
-
-        <div class="temp-description"><p>-</p></div>
-        <div class="location"><p>-</p></div>
-      </div>
-      <div class = "windmill-container"> 
-        <div id = 'windmillTitle'>
-          Let's' get that windmill here:
-        </div>
-        <div id = 'windmill'>
-          <div class = 'post'></div>
-          <div class = 'engine'></div>
-          <div class = 'flaps'>
-           <div class = 'flap'></div>
-           <div class = 'flap'></div>
-           <div class = 'flap'></div>
+      <header>
+        <h2>Weather Guru</h2>
+      </header>
+      <main>
+        <form>
+          <div class="city">
+            <label for="city">Enter city name</label>
+            <input type="text" id="cityName" />
           </div>
-          <div class = 'bulb'></div>
-          <div class = 'head'></div>
-       </div> 
+        </form>
+        <div class="searchBtn">
+          <button type="submit" id="submit">
+            Search
+          </button>
         </div>
-      </div>
+        <div id = 'data-area'>
+          <div>
+            <div class="app-title">
+              <p id = "greeting-text">Weather</p>
+
+            <div class="notification"></div>
+      
+            <div class="weather container">
+              <div class="weather-icon">
+                <img src="icons/unknown.png" alt="" />
+              </div>
+              <div class="temp-value">
+                <p>- °<span>C</span></p>
+              </div>
+      
+              <div class="temp-description"><p>-</p></div>
+              <div class="location"><p>-</p></div>
+            </div>
+
+          <section id="pollutionInfo">
+            <div class="pollutionGrid">
+              <p id="headline">Air Quality Index</p>
+                <p id="valueRed" class="pollutionValues">0</p>
+                <p id="valueOrange" class="pollutionValues"></p>
+                <p id="valueYellow" class="pollutionValues"></p>
+                <p id="valueLightGreen" class="pollutionValues"></p>
+                <p id="valueGreen" class="pollutionValues"></p>
+                <div id="redTriangle" class="triangle-down"></div>
+                <div id="orangeTriangle" class="triangle-down"></div>
+                <div id="yellowTriangle" class="triangle-down"></div>
+                <div id="lightGreenTriangle" class="triangle-down"></div>
+                <div id="greenTriangle" class="triangle-down"></div>
+                <div class="bar"></div>
+                <p id="descRed" class="descriptions">Very Poor</p>
+                <p id="descOrange" class="descriptions">Poor</p>
+                <p id="descYellow" class="descriptions">Moderate</p>
+                <p id="descLightGreen" class="descriptions">Fair</p>
+                <p id="descGreen" class="descriptions">Good</p>
+            </div>
+          </section>
+          <div class = "windmill-container"> 
+            <div id = 'windmillTitle'>
+              Let's' get that windmill here:
+            </div>
+            <div id = 'windmill'>
+              <div class = 'post'></div>
+              <div class = 'engine'></div>
+              <div class = 'flaps'>
+              <div class = 'flap'></div>
+              <div class = 'flap'></div>
+              <div class = 'flap'></div>
+              </div>
+              <div class = 'bulb'></div>
+              <div class = 'head'></div>
+            </div> 
+          </div>
+        </div>
+      </main>
     </div>
     <script src="api.js"></script>
-    <!-- <script src="script.js"></script> -->
   </body>
 </html>
