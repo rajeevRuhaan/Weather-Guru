@@ -4,6 +4,8 @@ let tempElement = document.querySelector(".temp-value p");
 let descElement = document.querySelector(".temp-description p");
 let locationElement = document.querySelector(".location p");
 let dataSection = document.getElementById("data-area");
+
+//instead of displaying "Weather"-text, let's display greeting:
 let greetingText = document.getElementById("greeting-text");
 
 //for windmill we need a couple more elements:
@@ -53,6 +55,7 @@ function getCity() {
       displayWind();
       //let's get the greeting also:
       displayGreeting();
+
       showData();
     });
 }
@@ -411,8 +414,11 @@ function displayGreeting() {
   for (let n = 0; n < countryCodes.length; n++) {
     if (countryCodes[n].includes(formattedCountryCode)) {
       console.log(`Hello in ${weather.country} is ${words[n]}`);
-      greeting = words[n];
+      let parts = words[n].split('"');
+      console.log(parts);
+      greeting = parts[1];
     }
   }
+  //displaying it:
   greetingText.innerText = greeting;
 }
