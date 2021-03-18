@@ -15,7 +15,7 @@
 }
 
 body {
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   height: 50vh;
   background: url(https://source.unsplash.com/9AqIdzEc9pY/1600x900) no-repeat
     fixed center center/cover;
@@ -34,7 +34,7 @@ header {
   background-color: transparent;
   /* width: 100%; */
 }
-#data-area{
+#data-area {
   display: none;
 }
 
@@ -56,7 +56,7 @@ h2 {
 input,
 textarea,
 button {
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
 }
 
 .city input {
@@ -82,8 +82,6 @@ button {
   font-size: 13px;
   margin-left: 100px;
 }
-
-
 
 .container {
   width: 300px;
@@ -119,7 +117,7 @@ button {
 .weather-container {
   width: 300px;
   height: 260px;
-  background-color:rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.5);
 }
 .weather-icon {
   width: 300px;
@@ -173,36 +171,34 @@ button {
   padding-top: 10px;
 }
 #windmill {
-
   width: 300px;
   height: 30%;
   margin: 1rem auto 0;
   position: relative;
   z-index: 10;
-
 }
 
 .post {
-position: absolute;
-width: 5px;
-height: 80px;
+  position: absolute;
+  width: 5px;
+  height: 80px;
 
-background-color: #BABABA;
-/* background-image: linear-gradient(to top, var(--windmillcolor) 0%, darken(var(--windmillcolor), 20%) 100%); */
-top: 145px;
-left: 145px;
-border-radius: 3px;
+  background-color: #bababa;
+  /* background-image: linear-gradient(to top, var(--windmillcolor) 0%, darken(var(--windmillcolor), 20%) 100%); */
+  top: 145px;
+  left: 145px;
+  border-radius: 3px;
 }
 
 .engine {
-position: absolute;
-width: 10px;
-height: 10px;
-background-color: #BABABA;
-/* background-image: linear-gradient(to bottom, var(--windmillcolor) 0%, darken var(--windmillcolor) 20%, 100%); */
-top: 137px;
-left: 142px;
-border-radius: 2px;
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #bababa;
+  /* background-image: linear-gradient(to bottom, var(--windmillcolor) 0%, darken var(--windmillcolor) 20%, 100%); */
+  top: 137px;
+  left: 142px;
+  border-radius: 2px;
 }
 
 .head {
@@ -214,16 +210,15 @@ border-radius: 2px;
   z-index: 1000;
   background-color: #696969;
   border-radius: 50%;
-
 }
 
 .flaps {
-width: 100px;
-height: 100px;
-position: absolute;
-top: 90px;
-left: 99px;
-animation: rotatemill 10s linear infinite;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 90px;
+  left: 99px;
+  animation: rotatemill 10s linear infinite;
 }
 .speed1 {
   animation: rotatemill 8s linear infinite;
@@ -241,21 +236,19 @@ animation: rotatemill 10s linear infinite;
   animation: rotatemill 0.2s linear infinite;
 }
 
-
 .flap {
-width: 3px;
-height: 60px;
-position: absolute;
-background-color: #979797;
-/* background: linear-gradient(to bottom, var(--windmillcolor) 0%, darken(var(--windmillcolor), 20%) 100%); */
-/* border-top-left-radius: 5px 20px; */
+  width: 3px;
+  height: 60px;
+  position: absolute;
+  background-color: #979797;
+  /* background: linear-gradient(to bottom, var(--windmillcolor) 0%, darken(var(--windmillcolor), 20%) 100%); */
+  /* border-top-left-radius: 5px 20px; */
 }
 
 .flaps .flap:nth-child(1) {
   top: -10px;
   left: 50px;
 }
-
 
 .flaps .flap:nth-child(2) {
   top: 35px;
@@ -264,29 +257,29 @@ background-color: #979797;
 }
 
 .flaps .flap:nth-child(3) {
-top: 35px;
-left: 22px;
-transform: rotate(240deg);
+  top: 35px;
+  left: 22px;
+  transform: rotate(240deg);
 }
 .bulb {
-height: 8px;
-width: 8px;
-position: absolute;
-top: 133px;
-left: 143px;
-background: red;
-border-radius: 50%;
-animation: lightbulblight 2s linear infinite;
-z-index: -1;
+  height: 8px;
+  width: 8px;
+  position: absolute;
+  top: 133px;
+  left: 143px;
+  background: red;
+  border-radius: 50%;
+  animation: lightbulblight 2s linear infinite;
+  z-index: -1;
 }
 
 @keyframes rotatemill {
-0% {
-  transform: rotate(0deg)
-}
-100% {
-  transform: rotate(-360deg)
-}
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
 }
 @keyframes lightbulblight {
   0% {
@@ -306,10 +299,10 @@ z-index: -1;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 7vh;
+  margin: 1vh;
 }
 .pollutionGrid {
-  width: 300px;
+  width: 400px;
   display: grid;
   align-items: center;
   justify-content: center;
@@ -430,4 +423,3 @@ z-index: -1;
 #descGreen {
   grid-area: o;
 }
-

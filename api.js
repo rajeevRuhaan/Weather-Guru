@@ -5,6 +5,12 @@ let descElement = document.querySelector(".temp-description p");
 let locationElement = document.querySelector(".location p");
 let dataSection = document.getElementById("data-area");
 
+//for second API call for AQI
+let pollutionValues = document.getElementsByClassName("pollutionValues");
+let triangles = document.getElementsByClassName("triangle-down");
+let pollutionDescriptions = document.getElementsByClassName("descriptions");
+let aqiLevel = document.getElementById("aqiLevel");
+
 //instead of displaying "Weather"-text, let's display greeting:
 let greetingText = document.getElementById("greeting-text");
 
@@ -46,6 +52,10 @@ function getCity() {
 
       weather.city = data.name;
       weather.country = data.sys.country;
+      //lets get latitude and longitude from first API call
+      let latitude = data.coord.lat;
+      let longitude = data.coord.lon;
+      getLatLon(latitude, longitude);
 
       //let's get windspeed also:
       weather.windspeed = data.wind.speed;
@@ -115,25 +125,55 @@ tempElement.addEventListener("click", () => {
 });
 
 /**second api call */
-let lat = 60.25;
-let lon = 24.6667;
-/* let cnt = 10; */
-/* let key1 = "15e011982aa379793f2783ceb2b8952c"; */
-let dailyForcast = `http://api.openweathermap.org/data/2.5/air_pollution/forecast?lat=${lat}&lon=${lon}&appid=${key}`;
+function getLatLon(lat, lon) {
+  console.log(lat, lon);
+  let dailyForcast = `http://api.openweathermap.org/data/2.5/air_pollution/forecast?lat=${lat}&lon=${lon}&appid=${key}`;
 
-/* `http://api.openweathermap.org/data/2.5/forecast/daily?q=${city}&cnt=${cnt}&APPID=${key}`; */
-fetch(dailyForcast)
-  .then((resp) => resp.json())
-  .then((forcast) => {
-    console.log(forcast);
+  /* `http://api.openweathermap.org/data/2.5/forecast/daily?q=${city}&cnt=${cnt}&APPID=${key}`; */
+  fetch(dailyForcast)
+    .then((resp) => resp.json())
+    .then((airPollution) => {
+      console.log(airPollution);
+      //get AQI index from api
+      weather.pollution = airPollution.list[0].main.aqi;
+      //display AQI level
+      aqiLevel.textContent = `AQI: ${weather.pollution}  `;
+    })
+    .then(function () {
+      displayAQI();
+    });
+}
 
-    let epocToDate = forcast.list[24].dt;
-    console.log("data:", epocToDate);
-    let myDate = new Date(epocToDate * 1000);
-    let convert = myDate.toLocaleString();
-    console.log("readable date:", convert);
-  });
+function displayAQI() {
+  console.log(weather.pollution);
+  for (i = 0; i < pollutionValues.length; i++) {
+    pollutionValues[i].style.visibility = "hidden";
+    triangles[i].style.visibility = "hidden";
+    pollutionDescriptions[i].style.visibility = "hidden";
+  }
 
+  if (weather.pollution === 5) {
+    pollutionValues[0].style.visibility = "visible";
+    triangles[0].style.visibility = "visible";
+    pollutionDescriptions[0].style.visibility = "visible";
+  } else if (weather.pollution === 4) {
+    pollutionValues[1].style.visibility = "visible";
+    triangles[1].style.visibility = "visible";
+    pollutionDescriptions[1].style.visibility = "visible";
+  } else if (weather.pollution === 3) {
+    pollutionValues[2].style.visibility = "visible";
+    triangles[2].style.visibility = "visible";
+    pollutionDescriptions[2].style.visibility = "visible";
+  } else if (weather.pollution === 2) {
+    pollutionValues[3].style.visibility = "visible";
+    triangles[3].style.visibility = "visible";
+    pollutionDescriptions[3].style.visibility = "visible";
+  } else {
+    pollutionValues[4].style.visibility = "visible";
+    triangles[4].style.visibility = "visible";
+    pollutionDescriptions[4].style.visibility = "visible";
+  }
+}
 function displayGreeting() {
   //Getting the greeting data from https://github.com/stathisg/hello-in-all-languages:
 
