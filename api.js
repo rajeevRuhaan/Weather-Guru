@@ -5,6 +5,12 @@ let descElement = document.querySelector(".temp-description p");
 let locationElement = document.querySelector(".location p");
 let dataSection = document.getElementById("data-area");
 
+//for second API call for AQI
+let pollutionValues = document.getElementsByClassName("pollutionValues");
+let triangles = document.getElementsByClassName("triangle-down");
+let pollutionDescriptions = document.getElementsByClassName("descriptions");
+let coLevel = document.getElementById("coLevel");
+
 //instead of displaying "Weather"-text, let's display greeting:
 let greetingText = document.getElementById("greeting-text");
 
@@ -12,7 +18,7 @@ let greetingText = document.getElementById("greeting-text");
 let windmillText = document.getElementById("windmillTitle");
 let rotatingFlaps = document.querySelector(".flaps");
 
-//for eventlistener of submit button on landing page
+//for eventlistener of submit button
 let submit = document.getElementById("submit");
 let city = "Helsinki";
 
@@ -21,6 +27,7 @@ weather.temperature = {
   unit: "celsius",
 };
 
+let pollution = 0;
 const KELVIN = 273;
 const key = "92e62b34141b6fe50fe8e3935ae2e018";
 
@@ -32,7 +39,6 @@ function getCity() {
   console.log("getcity started. City: " + city);
   city = document.getElementById("cityName").value;
   console.log("Now it's " + city);
-  // return city;
 
   /*** fetching dataing using openweather api */
   let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${key}`;
@@ -47,8 +53,14 @@ function getCity() {
       weather.city = data.name;
       weather.country = data.sys.country;
 
-      //let's get windspeed also:
+      //lets get latitude and longitude from first API call
+      let latitude = data.coord.lat;
+      let longitude = data.coord.lon;
+      getLatLon(latitude, longitude);
+
+      //Getting wind data:
       weather.windspeed = data.wind.speed;
+      weather.windDirection = data.wind.deg;
     })
     .then(function () {
       displayWeather();
@@ -56,8 +68,62 @@ function getCity() {
       //let's get the greeting also:
       displayGreeting();
 
+      displayWindDirection();
+
       showData();
     });
+}
+
+/*****second api call ******/
+
+function getLatLon(la, lo) {
+  console.log(la, lo);
+
+  /* let key1 = "15e011982aa379793f2783ceb2b8952c"; */
+  let dailyForcast = `http://api.openweathermap.org/data/2.5/air_pollution/forecast?lat=${la}&lon=${lo}&appid=${key}`;
+
+  fetch(dailyForcast)
+    .then((resp) => resp.json())
+
+    .then((airPollution) => {
+      console.log(airPollution);
+      //get AQI index from api
+      weather.pollution = airPollution.list[0].main.aqi;
+    })
+    .then(function () {
+      displayAQI();
+    });
+}
+
+function displayAQI() {
+  console.log(weather.pollution);
+  for (i = 0; i < pollutionValues.length; i++) {
+    pollutionValues[i].style.visibility = "hidden";
+    triangles[i].style.visibility = "hidden";
+    pollutionDescriptions[i].style.visibility = "hidden";
+  }
+
+  if (weather.pollution === 5) {
+    pollutionValues[0].style.visibility = "visible";
+    triangles[0].style.visibility = "visible";
+    pollutionDescriptions[0].style.visibility = "visible";
+  } else if (weather.pollution === 4) {
+    pollutionValues[1].style.visibility = "visible";
+    triangles[1].style.visibility = "visible";
+    pollutionDescriptions[1].style.visibility = "visible";
+  } else if (weather.pollution === 3) {
+    pollutionValues[2].style.visibility = "visible";
+    triangles[2].style.visibility = "visible";
+    pollutionDescriptions[2].style.visibility = "visible";
+  } else if (weather.pollution === 2) {
+    pollutionValues[3].style.visibility = "visible";
+    triangles[3].style.visibility = "visible";
+    pollutionDescriptions[3].style.visibility = "visible";
+  } else {
+    pollutionValues[4].style.visibility = "visible";
+    triangles[4].style.visibility = "visible";
+    pollutionDescriptions[4].style.visibility = "visible";
+  }
 }
 
 function displayWeather() {
@@ -401,10 +467,6 @@ function displayGreeting() {
   console.log("countrycodes: " + countryCodes.length);
   console.log("hello-expressions: " + words.length);
 
-  console.log("Couple example countrycodes:");
-  console.log(countryCodes[5]);
-  console.log(countryCodes[50]);
-  console.log(countryCodes[150]);
   //let's change countrycode format to be same as in the countyCodes list:
   let formattedCountryCode = `("${weather.country}"`;
   console.log(formattedCountryCode);
@@ -421,4 +483,10 @@ function displayGreeting() {
   }
   //displaying it:
   greetingText.innerText = greeting;
+}
+
+function displayWindDirection() {
+  console.log("Wind angle= " + weather.windDirection);
+  document.getElementById("windDirection").style.transform =
+    "rotate(" + weather.windDirection + "deg)";
 }
