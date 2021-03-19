@@ -45,7 +45,7 @@ function getCity() {
   console.log("Now it's " + city);
 
   /*** fetching dataing using openweather api */
-  let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${key}`;
+  let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${key}`;
   fetch(url)
     .then((resp) => resp.json())
     .then((data) => {
@@ -87,7 +87,7 @@ function getLatLon(la, lo) {
   console.log(la, lo);
 
   /* let key1 = "15e011982aa379793f2783ceb2b8952c"; */
-  let dailyForcast = `http://api.openweathermap.org/data/2.5/air_pollution/forecast?lat=${la}&lon=${lo}&appid=${key}`;
+  let dailyForcast = `https://api.openweathermap.org/data/2.5/air_pollution/forecast?lat=${la}&lon=${lo}&appid=${key}`;
 
   fetch(dailyForcast)
     .then((resp) => resp.json())
