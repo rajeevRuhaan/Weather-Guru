@@ -39,6 +39,14 @@ const key = "92e62b34141b6fe50fe8e3935ae2e018";
 
 submit.addEventListener("click", getCity);
 
+document.getElementById("cityName").addEventListener("keydown", (e) => {
+  if (e.key == "Enter") {
+    e.preventDefault();
+    console.log("you pressed Enter");
+    submit.click();
+  }
+});
+
 function getCity() {
   console.log("getcity started. City: " + city);
   city = document.getElementById("cityName").value;
@@ -141,9 +149,8 @@ function displayWeather() {
 }
 
 function displayWind() {
-  rotatingFlaps.classList.remove("speed2");
-  rotatingFlaps.classList.remove("speed3");
-  rotatingFlaps.classList.remove("speed4");
+  rotatingFlaps.classList.remove("speed2", "speed3", "speed4");
+
   if (weather.windspeed < 2) {
     windmillText.innerHTML = `Wind speed: Calm (${weather.windspeed} m/s)`;
     rotatingFlaps.classList.add("speed1");
