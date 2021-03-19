@@ -12,6 +12,10 @@ CSS
 
 ## Setup and usage
 
+Live link: https://akselinkoodit.github.io/Weather-Guru/
+
+The page asks for a city. After you've typed the city and click search, it displays that citys weather information (and a greeting in the local language).
+
 ## Screenshot
 
 ![Weather Guru Screenshot](Weatherguruscreenshot.png)
