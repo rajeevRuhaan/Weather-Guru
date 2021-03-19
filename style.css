@@ -1,26 +1,31 @@
+:root {
+  --font: "Raleway", sans-serif;
+  --container: rgba(255, 255, 255, 0.5);
+  --button-border: #a4a4a4;
+  --paragraph-color: #293251;
+  --windmill-color1: #bababa;
+  --windmill-head: #696969;
+  --windmill-flap: #979797;
+  --bulb-aqi1: #ff0000;
+  --aqi2: #ffa500;
+  --aqi3: #ffff00;
+  --aqi4: #bceb87;
+  --aqi5: #008000;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  line-height: 1.6;
 }
+
 html {
   scroll-behavior: smooth;
 }
-.container {
-  width: 300px;
-  height: 300px;
-  background-color: rgba(255, 255, 255, 0.5);
-  display: block;
-  margin-top: 100px;
-  border-radius: 10px;
-  padding-bottom: 50px;
-}
 
 body {
-  font-family: "Raleway", sans-serif;
+  font-family: var(--font);
   font-weight: 600;
-  height: 50vh;
   background: url(https://source.unsplash.com/9AqIdzEc9pY/1600x900) no-repeat
     fixed center center/cover;
   display: flex;
@@ -28,14 +33,39 @@ body {
   align-items: center;
   position: relative;
 }
+
+h2 {
+  font-weight: 600;
+  font-size: 2.5rem;
+  margin-top: 10px;
+}
+
+h4 {
+  padding: 10px 0;
+}
+
+#greeting-text {
+  padding: 10px 0 5px 0;
+}
+
 header {
   display: flex;
-  height: 50px;
+  height: 16vh;
   justify-content: center;
   align-items: center;
   top: 0;
   background-color: transparent;
 }
+
+.container {
+  width: 300px;
+  height: 300px;
+  background-color: var(--container);
+  display: block;
+  border-radius: 10px;
+  padding-bottom: 50px;
+}
+
 #data-area {
   display: none;
 }
@@ -45,70 +75,59 @@ header {
 }
 
 form {
-  margin-top: 50px;
+  margin-top: 25px;
   padding: 10px;
-}
-
-h2 {
-  font-weight: 600;
-  font-size: 2.5rem;
-  margin-top: 10px;
+  margin-bottom: 23px;
 }
 
 input,
 textarea,
 button {
-  font-family: "Raleway", sans-serif;
+  font-family: var(--font);
+}
+
+label {
+  font-size: 1.3rem;
 }
 
 .city input {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #a4a4a4;
+  padding: 5px 10px;
+  border: 1px solid var(--button-border);
   border-radius: 5px;
-  font-size: 13px;
-}
-
-p {
-  margin-top: 10px;
-  margin-left: 10px;
-  margin-bottom: 10px;
+  font-size: 1.2rem;
 }
 
 button {
+  display: flex;
+  justify-content: center;
   align-items: center;
-  border: 1px solid #a4a4a4;
-  margin-top: 20px;
-  padding-right: 10px;
-  padding-left: 10px;
-  font-size: 13px;
-  margin-left: 100px;
+  border: 1px solid var(--button-border);
+  font-size: 1.3rem;
+
+  margin: 0 auto;
+  padding: 0 10px;
 }
 
-.container {
-  width: 300px;
-  background-color: 255, 255, 255, 255, 0.5;
-  display: block;
-  margin: 0 auto;
-  border-radius: 10px;
-  padding-bottom: 50px;
-}
 .app-title {
   width: 300px;
   height: 50px;
   border-radius: 10px 10px 0 0;
 }
+
 .app-title p {
   text-align: center;
   padding: 15px;
   margin: 0 auto;
   font-size: 1.2em;
-  color: #293251;
+  color: var(--paragraph-color);
 }
+
 .notification {
   background-color: #f8d7da;
   display: none;
 }
+
 .notification p {
   background-color: #721c24;
   font-size: 1.2em;
@@ -116,28 +135,33 @@ button {
   text-align: center;
   padding: 10px 0;
 }
+
 .weather-container {
   width: 300px;
   height: 260px;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: var(--container);
 }
+
 .weather-icon {
   width: 300px;
   height: 128px;
-  /* background-color: #721c24; */
+  padding: 20px 0;
 }
+
 .weather-icon img {
   display: block;
   margin: 0 auto;
 }
+
 .temp-value p {
   padding: 0;
   margin: 0;
-  color: #293251;
+  color: var(--paragraph-color);
   font-size: 4em;
   text-align: center;
   cursor: pointer;
 }
+
 .temp-value p:hover {
   text-shadow: 0 0 3px #333;
   font-size: 4.1em;
@@ -150,7 +174,7 @@ span:hover {
 }
 
 .temp-value span {
-  color: #293251;
+  color: var(--paragraph-color);
   font-size: 0.2em;
 }
 /* .temp-description {
@@ -158,165 +182,27 @@ span:hover {
 .temp-description p {
   padding: 8px;
   margin: 0;
-  color: #293251;
+  color: var(--paragraph-color);
   text-align: center;
   font-size: 1.2em;
 }
 /* .location {
 } */
 .location p {
-  margin: 0;
-  padding: 0;
-  color: #293251;
+  margin: 0 auto;
+  color: var(--paragraph-color);
   text-align: center;
   font-size: 0.8em;
 }
 /**********sunrise/sunset style:*********/
 .sunrise_set {
   width: 300px;
-  height: 200px;
-  background-color: rgba(255, 255, 255, 0.5);
+  height: 150px;
+  background-color: var(--container);
   border-radius: 10px;
-  margin-top: 10px;
+  margin-top: 5px;
   text-align: center;
   padding-top: 10px;
-}
-
-/********Windmill styles:**********/
-.windmill-container {
-  width: 300px;
-  height: 100px;
-  background-color: rgba(255, 255, 255, 0.459);
-  border-radius: 10px;
-  text-align: center;
-  padding-top: 10px;
-}
-#windData {
-  display: flex;
-  justify-content: space-around;
-}
-
-#windDirection {
-  height: 30px;
-  width: 20px;
-  transform: rotate(90deg);
-}
-#windmill {
-  width: 300px;
-  height: 30%;
-  margin: 1rem auto 0;
-  position: relative;
-  z-index: 10;
-}
-
-.post {
-  position: absolute;
-  width: 5px;
-  height: 80px;
-  background-color: #bababa;
-  top: 145px;
-  left: 145px;
-  border-radius: 3px;
-}
-
-.engine {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  background-color: #bababa;
-  top: 137px;
-  left: 142px;
-  border-radius: 2px;
-}
-
-.head {
-  width: 5px;
-  height: 5px;
-  position: absolute;
-  top: 140px;
-  left: 145px;
-  z-index: 1000;
-  background-color: #696969;
-  border-radius: 50%;
-}
-
-.flaps {
-  width: 100px;
-  height: 100px;
-  position: absolute;
-  top: 90px;
-  left: 99px;
-  animation: rotatemill 10s linear infinite;
-}
-.speed1 {
-  animation: rotatemill 8s linear infinite;
-}
-.speed2 {
-  animation: rotatemill 4s linear infinite;
-}
-.speed3 {
-  animation: rotatemill 2s linear infinite;
-}
-.speed4 {
-  animation: rotatemill 1s linear infinite;
-}
-.speed5 {
-  animation: rotatemill 0.2s linear infinite;
-}
-
-.flap {
-  width: 3px;
-  height: 60px;
-  position: absolute;
-  background-color: #979797;
-}
-
-.flaps .flap:nth-child(1) {
-  top: -10px;
-  left: 50px;
-}
-
-.flaps .flap:nth-child(2) {
-  top: 35px;
-  left: 75px;
-  transform: rotate(120deg);
-}
-
-.flaps .flap:nth-child(3) {
-  top: 35px;
-  left: 22px;
-  transform: rotate(240deg);
-}
-.bulb {
-  height: 8px;
-  width: 8px;
-  position: absolute;
-  top: 133px;
-  left: 143px;
-  background: red;
-  border-radius: 50%;
-  animation: lightbulblight 2s linear infinite;
-  z-index: -1;
-}
-
-@keyframes rotatemill {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(-360deg);
-  }
-}
-@keyframes lightbulblight {
-  0% {
-    background: rgba(49, 7, 7, 0.733);
-    box-shadow: 0 0 0 #290707;
-  }
-
-  50% {
-    background: lighten(#f12a2a, 60%);
-    box-shadow: 0 0 10px lighten(#110303, 60%);
-  }
 }
 
 /*Air quality card*/
@@ -329,7 +215,8 @@ span:hover {
 }
 
 .pollutionGrid {
-  width: 400px;
+  width: 300px;
+  padding: 20px 40px;
   display: grid;
   align-items: center;
   justify-content: center;
@@ -344,7 +231,7 @@ span:hover {
     "i n c s";
   grid-gap: 0.5rem;
   position: relative;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: var(--container);
   border-radius: 10px;
 }
 #headline {
@@ -397,22 +284,22 @@ span:hover {
 }
 #redTriangle {
   grid-area: n;
-  border-top: 20px solid red;
+  border-top: 20px solid var(--bulb-aqi1);
 }
 #orangeTriangle {
   grid-area: m;
-  border-top: 20px solid orange;
+  border-top: 20px solid var(--aqi2);
 }
 #yellowTriangle {
-  border-top: 20px solid yellow;
+  border-top: 20px solid var(--aqi3);
   grid-area: l;
 }
 #lightGreenTriangle {
-  border-top: 20px solid rgb(188, 235, 135);
+  border-top: 20px solid var(--aqi4);
   grid-area: k;
 }
 #greenTriangle {
-  border-top: 20px solid green;
+  border-top: 20px solid var(--aqi5);
   grid-area: j;
 }
 /*Pollution bar*/
@@ -422,11 +309,11 @@ span:hover {
   width: 2rem;
   background: linear-gradient(
     to top,
-    red,
-    orange,
-    yellow,
-    rgb(188, 235, 135),
-    green
+    var(--bulb-aqi1),
+    var(--aqi2),
+    var(--aqi3),
+    var(--aqi4),
+    var(--aqi5)
   );
   border-radius: 5px;
   margin-bottom: 1rem;
@@ -453,4 +340,139 @@ span:hover {
 }
 #descGreen {
   grid-area: o;
+}
+
+/********Windmill styles:**********/
+.windmill-container {
+  width: 300px;
+  height: 300px;
+  background-color: var(--container);
+  border-radius: 10px;
+  text-align: center;
+  padding-top: 10px;
+}
+#windData {
+  display: flex;
+  justify-content: space-around;
+}
+
+#windDirection {
+  height: 30px;
+  width: 20px;
+}
+#windmill {
+  width: 300px;
+  height: 30%;
+  position: relative;
+  z-index: 10;
+}
+
+.post {
+  position: absolute;
+  width: 5px;
+  height: 80px;
+  background-color: var(--windmill-color1);
+  top: 145px;
+  left: 145px;
+  border-radius: 3px;
+}
+
+.engine {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: var(--windmill-color1);
+  top: 137px;
+  left: 142px;
+  border-radius: 2px;
+}
+
+.head {
+  width: 5px;
+  height: 5px;
+  position: absolute;
+  top: 140px;
+  left: 145px;
+  z-index: 1000;
+  background-color: var(--windmill-head);
+  border-radius: 50%;
+}
+
+.flaps {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 90px;
+  left: 99px;
+  animation: rotatemill 10s linear infinite;
+}
+.speed1 {
+  animation: rotatemill 8s linear infinite;
+}
+.speed2 {
+  animation: rotatemill 4s linear infinite;
+}
+.speed3 {
+  animation: rotatemill 2s linear infinite;
+}
+.speed4 {
+  animation: rotatemill 1s linear infinite;
+}
+.speed5 {
+  animation: rotatemill 0.2s linear infinite;
+}
+
+.flap {
+  width: 3px;
+  height: 60px;
+  position: absolute;
+  background-color: var(--windmill-flap);
+}
+
+.flaps .flap:nth-child(1) {
+  top: -10px;
+  left: 50px;
+}
+
+.flaps .flap:nth-child(2) {
+  top: 35px;
+  left: 75px;
+  transform: rotate(120deg);
+}
+
+.flaps .flap:nth-child(3) {
+  top: 35px;
+  left: 22px;
+  transform: rotate(240deg);
+}
+.bulb {
+  height: 8px;
+  width: 8px;
+  position: absolute;
+  top: 133px;
+  left: 143px;
+  background: var(--bulb-aqi1);
+  border-radius: 50%;
+  animation: lightbulblight 2s linear infinite;
+  z-index: -1;
+}
+
+@keyframes rotatemill {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+@keyframes lightbulblight {
+  0% {
+    background: rgba(49, 7, 7, 0.733);
+    box-shadow: 0 0 0 #290707;
+  }
+
+  50% {
+    background: lighten(#f12a2a, 60%);
+    box-shadow: 0 0 10px lighten(#110303, 60%);
+  }
 }

@@ -5,14 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
-    <title>Weather-guru</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <title>Weather Guru</title>
   </head>
   <body>
     <div class="container">
       <header>
-        <img src="Weather-Guru-Logo.svg" alt="Weather Guru logo">
+        <img class="logo" src="Weather-Guru-Logo.svg" alt="Weather Guru logo" />
       </header>
       <main>
         <form>
@@ -22,50 +25,48 @@
           </div>
         </form>
         <div class="searchBtn">
-          <button type="submit" id="submit">
-            Search
-          </button>
+          <button type="submit" id="submit">Search</button>
         </div>
-        <div id = 'data-area'>
-          <div>
-            <div class="app-title">
-              <p id = "greeting-text">Weather</p>
+        <div id="data-area">
+          <div class="app-title">
+            <p id="greeting-text">Weather</p>
 
             <div class="notification"></div>
-      
-            <div class="weather container">
-              <div class="weather-icon">
-                <img src="icons/unknown.png" alt="" />
-              </div>
-              <div class="temp-value">
-                <p>- °<span>C</span></p>
-              </div>
-      
-              <div class="temp-description"><p>-</p></div>
-              <div class="location"><p>-</p></div>
+          </div>
+
+          <div class="weather container">
+            <div class="weather-icon">
+              <img src="icons/unknown.png" alt="" />
+            </div>
+            <div class="temp-value">
+              <p>- °<span>C</span></p>
             </div>
 
-            <!-- Sunrise/sunset info: -->
-            <div class="sunrise_set">
-              <div class="sunrise">
-                <h4>Sunrise:</h4>
-                <p>-</p>
-              </div>
-              <div class="sunset">
-                <h4>Sunset:</h4>
-                <p>-</p>
-              </div>
+            <div class="temp-description"><p>-</p></div>
+            <div class="location"><p>-</p></div>
+          </div>
+
+          <!-- Sunrise/sunset info: -->
+          <div class="sunrise_set">
+            <div class="sunrise">
+              <h4>Sunrise:</h4>
+              <p>-</p>
             </div>
+            <div class="sunset">
+              <h4>Sunset:</h4>
+              <p>-</p>
+            </div>
+          </div>
 
           <section id="pollutionInfo">
             <div class="pollutionGrid">
               <p id="headline">Air Quality Index</p>
               <h1 id="coLevel"></h1>
-              <p id="valueRed" class="pollutionValues"></p>
-              <p id="valueOrange" class="pollutionValues"></p>
-              <p id="valueYellow" class="pollutionValues"></p>
-              <p id="valueLightGreen" class="pollutionValues"></p>
-              <p id="valueGreen" class="pollutionValues"></p>
+              <p id="valueRed" class="pollutionValues">5</p>
+              <p id="valueOrange" class="pollutionValues">4</p>
+              <p id="valueYellow" class="pollutionValues">3</p>
+              <p id="valueLightGreen" class="pollutionValues">2</p>
+              <p id="valueGreen" class="pollutionValues">1</p>
               <div id="redTriangle" class="triangle-down"></div>
               <div id="orangeTriangle" class="triangle-down"></div>
               <div id="yellowTriangle" class="triangle-down"></div>
@@ -79,27 +80,25 @@
               <p id="descGreen" class="descriptions">Good</p>
             </div>
           </section>
-          <div class = "windmill-container"> 
-            <div id = "windData">
-              <div id = 'windmillTitle'>
-                Let's' get that windmill here:
+          <div class="windmill-container">
+            <div id="windData">
+              <div id="windmillTitle">Let's' get that windmill here:</div>
+              <div id="windDirection">
+                <img src="arrow-down.svg" alt="Wind direction indicator" />
               </div>
-                <div id = 'windDirection'>
-                  <img src="arrow-down.svg" alt="Wind direction indicator"></div>
-                <!-- arrow from fontawesome.com -->
+              <!-- arrow from fontawesome.com -->
             </div>
-
-            <div id = 'windmill'>
-              <div class = 'post'></div>
-              <div class = 'engine'></div>
-              <div class = 'flaps'>
-              <div class = 'flap'></div>
-              <div class = 'flap'></div>
-              <div class = 'flap'></div>
+            <div id="windmill">
+              <div class="post"></div>
+              <div class="engine"></div>
+              <div class="flaps">
+                <div class="flap"></div>
+                <div class="flap"></div>
+                <div class="flap"></div>
               </div>
-              <div class = 'bulb'></div>
-              <div class = 'head'></div>
-            </div> 
+              <div class="bulb"></div>
+              <div class="head"></div>
+            </div>
           </div>
         </div>
       </main>
