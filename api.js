@@ -141,6 +141,9 @@ function displayWeather() {
 }
 
 function displayWind() {
+  rotatingFlaps.classList.remove("speed2");
+  rotatingFlaps.classList.remove("speed3");
+  rotatingFlaps.classList.remove("speed4");
   if (weather.windspeed < 2) {
     windmillText.innerHTML = `Wind speed: Calm (${weather.windspeed} m/s)`;
     rotatingFlaps.classList.add("speed1");
