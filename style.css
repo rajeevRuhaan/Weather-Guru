@@ -11,6 +11,7 @@
   --aqi3: #ffff00;
   --aqi4: #bceb87;
   --aqi5: #008000;
+  --button-hover: #d3d3d3;
 }
 
 * {
@@ -44,19 +45,6 @@ h4 {
   padding: 10px 0;
 }
 
-#greeting-text {
-  padding: 10px 0 5px 0;
-}
-
-header {
-  display: flex;
-  height: 16vh;
-  justify-content: center;
-  align-items: center;
-  top: 0;
-  background-color: transparent;
-}
-
 .container {
   width: 300px;
   height: 300px;
@@ -66,12 +54,13 @@ header {
   padding-bottom: 50px;
 }
 
-#data-area {
-  display: none;
-}
-
-.showIt {
-  display: block;
+header {
+  display: flex;
+  height: 16vh;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  background-color: transparent;
 }
 
 form {
@@ -102,11 +91,34 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid var(--button-border);
+  border: 0.5px solid var(--windmill-head);
   font-size: 1.3rem;
-
   margin: 0 auto;
   padding: 0 10px;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+}
+
+button:hover {
+  background-color: var(--button-hover);
+  border: 1px solid var(--windmill-head);
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  font-weight: 600;
+}
+
+#data-area {
+  display: none;
+}
+
+.showIt {
+  display: block;
 }
 
 .app-title {
@@ -121,6 +133,10 @@ button {
   margin: 0 auto;
   font-size: 1.2em;
   color: var(--paragraph-color);
+}
+
+#greeting-text {
+  padding: 10px 0 5px 0;
 }
 
 .notification {
@@ -177,8 +193,7 @@ span:hover {
   color: var(--paragraph-color);
   font-size: 0.2em;
 }
-/* .temp-description {
-} */
+
 .temp-description p {
   padding: 8px;
   margin: 0;
@@ -186,15 +201,16 @@ span:hover {
   text-align: center;
   font-size: 1.2em;
 }
-/* .location {
-} */
+
 .location p {
   margin: 0 auto;
   color: var(--paragraph-color);
   text-align: center;
   font-size: 0.8em;
 }
-/**********sunrise/sunset style:*********/
+
+/*Sunrise/Sunset style:*/
+
 .sunrise_set {
   width: 300px;
   height: 150px;
@@ -342,7 +358,8 @@ span:hover {
   grid-area: o;
 }
 
-/********Windmill styles:**********/
+/*Windmill styles:*/
+
 .windmill-container {
   width: 300px;
   height: 300px;
