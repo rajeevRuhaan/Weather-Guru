@@ -251,7 +251,7 @@ span:hover {
   border-radius: 10px;
 }
 #headline {
-  font-size: 24px;
+  font-size: 1.2rem;
   grid-area: a;
   text-align: center;
   margin-top: 1.5rem;

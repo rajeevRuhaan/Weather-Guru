@@ -39,10 +39,13 @@ const key = "92e62b34141b6fe50fe8e3935ae2e018";
 
 submit.addEventListener("click", getCity);
 
+//let's get search going with enter also:
 document.getElementById("cityName").addEventListener("keydown", (e) => {
   if (e.key == "Enter") {
+    //Enter has default action so let's first prevent that:
     e.preventDefault();
     console.log("you pressed Enter");
+    //instead of going starght to getCity, let's make make it act as if submit button was clicked (basically same thing):
     submit.click();
   }
 });
@@ -149,7 +152,7 @@ function displayWeather() {
 }
 
 function displayWind() {
-  rotatingFlaps.classList.remove("speed2", "speed3", "speed4");
+  rotatingFlaps.classList.remove("speed2", "speed3", "speed4", "speed5");
 
   if (weather.windspeed < 2) {
     windmillText.innerHTML = `Wind speed: Calm (${weather.windspeed} m/s)`;
