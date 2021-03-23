@@ -128,8 +128,9 @@ button:hover {
 }
 
 .app-title p {
+  display: block;
   text-align: center;
-  padding: 15px;
+  padding: 0;
   margin: 0 auto;
   font-size: 1.2em;
   color: var(--paragraph-color);
@@ -495,6 +496,6 @@ span:hover {
 }
 @media (max-width: 576px) {
   #data-area {
-    margin-top: 50px;
+    margin-top: 20px;
   }
 }
