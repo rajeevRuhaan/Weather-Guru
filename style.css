@@ -493,3 +493,8 @@ span:hover {
     box-shadow: 0 0 10px lighten(#110303, 60%);
   }
 }
+@media (max-width: 576px) {
+  #data-area {
+    margin-top: 10px;
+  }
+}
